@@ -16,7 +16,7 @@ class Invoker
     {
         if (!disableLog)
         {
-            Debug.Log("Replay!");
+            //Debug.Log("Replay!");
 
             CommandLog.commands.Enqueue(m_Command);  // log the command for playback later
         }

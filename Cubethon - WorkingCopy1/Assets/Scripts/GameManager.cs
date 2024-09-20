@@ -38,8 +38,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+//Changed update to fixed update
+    void FixedUpdate()
     {
         if (instantReplay)
         {
@@ -90,7 +90,6 @@ public class GameManager : MonoBehaviour
     void RunInstantReplay()
     {
 
-        Debug.Log("Replay!");
         if (CommandLog.commands.Count == 0)
         {
             return;
@@ -102,6 +101,8 @@ public class GameManager : MonoBehaviour
             command = CommandLog.commands.Dequeue();
             command._player = player.GetComponent<Rigidbody>();
             Invoker invoker = new Invoker();
+            Debug.Log("Replay!");
+
             invoker.disableLog = true;
             invoker.SetCommand(command);
             invoker.ExecuteCommand();
