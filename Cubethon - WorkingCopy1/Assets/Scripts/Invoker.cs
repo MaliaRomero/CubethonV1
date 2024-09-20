@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+class Invoker
+{
+    private Command m_Command;
+    public bool disableLog = false;
+
+    public void SetCommand(Command command)
+    {
+        m_Command = command;
+    }
+
+    public void ExecuteCommand()
+    {
+        if (!disableLog)
+        {
+            Debug.Log("Replay!");
+
+            CommandLog.commands.Enqueue(m_Command);  // log the command for playback later
+        }
+        m_Command.Execute();
+    }
+}
